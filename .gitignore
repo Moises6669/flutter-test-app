@@ -1,14 +1,43 @@
+Skip to content
+Search or jump to…
+Pulls
+Issues
+Codespaces
+Marketplace
+Explore
+ 
+@Moises6669 
+santhalakshminarayana
+/
+zehero-note
+Public
+Fork your own copy of santhalakshminarayana/zehero-note
+Code
+Issues
+Pull requests
+Actions
+Projects
+Security
+Insights
+zehero-note/.gitignore
+@santhalakshminarayana
+santhalakshminarayana adding first version
+Latest commit de01b02 on Jun 14, 2021
+ History
+ 1 contributor
+57 lines (47 sloc)  807 Bytes
+
 # Miscellaneous
 *.class
 *.log
 *.pyc
 *.swp
+*.lock
 .DS_Store
 .atom/
 .buildlog/
 .history
 .svn/
-migrate_working_dir/
 
 # IntelliJ related
 *.iml
@@ -32,6 +61,9 @@ migrate_working_dir/
 .pub/
 /build/
 
+# Web related
+lib/generated_plugin_registrant.dart
+
 # Symbolication related
 app.*.symbols
 
@@ -42,3 +74,28 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+/android/app/src/main/res/
+
+# IOS 
+/ios/
+
+# Web
+/web/
+
+# Test
+/test/
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+zehero-note/.gitignore at master · santhalakshminarayana/zehero-note
