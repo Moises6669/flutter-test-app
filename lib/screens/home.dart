@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './notes_edit.dart';
 
 const c1 = 0xFFFDFFFC,
     c2 = 0xFFa2d2ff,
@@ -27,7 +28,7 @@ class _Home extends State<Home> {
           backgroundColor: const Color(c2),
           brightness: Brightness.dark,
           title: Text(
-            'Super Note',
+            'SUPER NOTE',
             style: TextStyle(color: const Color(c5)),
           ),
         ),
@@ -38,7 +39,10 @@ class _Home extends State<Home> {
           ),
           tooltip: 'New Notes',
           backgroundColor: const Color(c4),
-          onPressed: () => {},
+          onPressed: () => {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => NotesEdit()))
+          },
         ),
       ),
     );
