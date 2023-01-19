@@ -1,4 +1,4 @@
-const NoteColors = {
+const dynamic NoteColors = {
   'red': {'l': 0xFFFFCDD2, 'b': 0xFFE57373},
   'pink': {'l': 0xFFF8BBD0, 'b': 0xFFF06292},
   'purple': {'l': 0xFFE1BEE7, 'b': 0xFFBA68C8},
