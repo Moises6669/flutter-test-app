@@ -36,6 +36,21 @@ class _NotesEdit extends State<NotesEdit> {
     });
   }
 
+  void handleColor(currentContext) {
+    showDialog(
+      context: currentContext,
+      builder: (context) => ColorPalette(
+        parentContext: currentContext,
+      ),
+    ).then((colorName) {
+      if (colorName != null) {
+        setState(() {
+          noteColor = colorName;
+        });
+      }
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -64,6 +79,16 @@ class _NotesEdit extends State<NotesEdit> {
           tooltip: 'Back',
           onPressed: () => {},
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.color_lens,
+              color: const Color(c1),
+            ),
+            tooltip: 'Color Palette',
+            onPressed: () => handleColor(context),
+          ),
+        ],
         title: NoteTitleEntry(_titleTextController),
       ),
       body: NoteEntry(_contentTextController),
@@ -127,6 +152,48 @@ class NoteEntry extends StatelessWidget {
         style: TextStyle(
           fontSize: 19,
           height: 1.5,
+        ),
+      ),
+    );
+  }
+}
+
+class ColorPalette extends StatelessWidget {
+  final parentContext;
+
+  const ColorPalette({
+    @required this.parentContext,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      backgroundColor: Color(c1),
+      clipBehavior: Clip.hardEdge,
+      insetPadding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(2),
+      ),
+      child: Container(
+        padding: EdgeInsets.all(8),
+        child: Wrap(
+          alignment: WrapAlignment.start,
+          spacing: MediaQuery.of(context).size.width * 0.02,
+          runSpacing: MediaQuery.of(context).size.width * 0.02,
+          children: NoteColors.entries.map<Widget>((entry) {
+            return GestureDetector(
+              onTap: () => Navigator.of(context).pop(entry.key),
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.12,
+                height: MediaQuery.of(context).size.width * 0.12,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(
+                      MediaQuery.of(context).size.width * 0.06),
+                  color: Color(entry.value['b']),
+                ),
+              ),
+            );
+          }).toList(),
         ),
       ),
     );
