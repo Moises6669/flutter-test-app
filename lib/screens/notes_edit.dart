@@ -51,6 +51,42 @@ class _NotesEdit extends State<NotesEdit> {
     });
   }
 
+  void handleBackButton() async {
+    if (noteTitle.length == 0) {
+      if (noteContent.length == 0) {
+        Navigator.pop(context);
+        return;
+      } else {
+        String title = noteContent.split('\n')[0];
+        if (title.length > 31) {
+          title = title.substring(0, 31);
+        }
+        setState(() {
+          noteTitle = title;
+        });
+      }
+    }
+    //save New Note
+    Note noteObj =
+        Note(title: noteTitle, content: noteContent, noteColor: noteColor);
+
+    try {
+      await _insertNote(noteObj);
+    } catch (e) {
+      print('Error inserting row');
+    } finally {
+      Navigator.pop(context);
+      return;
+    }
+  }
+
+  Future<void> _insertNote(Note note) async {
+    NotesDatabase notesDb = NotesDatabase();
+    await notesDb.insertNote(note);
+    int result = await notesDb.insertNote(note);
+    await notesDb.closeDatabase();
+  }
+
   @override
   void initState() {
     super.initState();
