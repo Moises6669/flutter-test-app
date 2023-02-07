@@ -1,6 +1,8 @@
 import 'package:sqflite/sqflite.dart';
 import 'note.dart';
 
+//connection database with async
+
 class NotesDatabase {
   static final _name = "NotesDatabase.db";
   static final _version = 1;
